@@ -13,7 +13,7 @@ const taskSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  indate: {
+  inDate: {
     type: String,
     required: true,
   },
@@ -26,6 +26,10 @@ const taskSchema = new mongoose.Schema({
     required: true,
   },
   title: {
+    type: Number,
+    required: true,
+  },
+  taskId: {
     type: Number,
     required: true,
   },
