@@ -1,0 +1,21 @@
+{
+  "name": "sansara-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aloe-99/sansara-api.git"
+  },
+  "author": "aloe-99",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aloe-99/sansara-api/issues"
+  },
+  "homepage": "https://github.com/aloe-99/sansara-api#readme"
+}
