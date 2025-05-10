@@ -1,29 +1,19 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.Schema({
-  title: {
+const taskSchema = new mongoose.Schema({
+  text: {
     type: String,
     required: true,
     minlength: 1,
-    maxlength: 30,
+    maxlength: 50,
   },
-  description: {
-    type: String,
-    required: true,
-    maxlength: 200,
-  },
+  owner: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  owner: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-  },
-  executor: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-  },
+  listID: { type: mongoose.Types.ObjectId, ref: 'list', required: true },
+  projectID: { type: mongoose.Types.ObjectId, ref: 'project', required: true },
 });
 
-module.exports = mongoose.model('Task', TaskSchema);
+module.exports = mongoose.model('task', taskSchema);

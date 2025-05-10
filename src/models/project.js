@@ -1,25 +1,20 @@
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 30,
   },
-  description: {
-    type: String,
-    required: true,
-    maxlength: 200,
-  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  imageLink: {
+  img: {
     validate: {
       validator(v) {
-        return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?$/.test(v);
+        return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?$/.test(v); //eslint-disable-line
       },
       message: (props) => `${props.value} is not a valid link!`,
     },
@@ -27,10 +22,7 @@ const projectSchema = new mongoose.Schema({
     required: true,
     default: 'ДОБАВИТЬ ССЫЛКУ ДЛЯ ИЗОБРАЖЕНИЯ',
   },
-  owner: {
-    type: mongoose.Types.ObjectId,
-    required: true,
-  },
+  owner: { type: mongoose.Types.ObjectId, ref: 'user', required: true },
 });
 
 module.exports = mongoose.model('project', projectSchema);

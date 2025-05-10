@@ -20,8 +20,14 @@
   "homepage": "https://github.com/aloe-99/sansara-api#readme",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "celebrate": "^15.0.3",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongoose": "^8.13.2"
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "eslint": "^8.25.0",

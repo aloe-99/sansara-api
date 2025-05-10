@@ -1,16 +1,24 @@
 const router = require('express').Router();
 
-// const authRouter = require('./authRouter');
+const authRouter = require('./authRouter');
 const usersRouter = require('./usersRouter');
 const projectsRouter = require('./projectsRouter');
-const tasksRouter = require('./tasksRouter');
+// const tasksRouter = require('./tasksRouter');
 
-// router.use('/', authRouter);
+const auth = require('../middlewares/auth');
+
+// const NotFoundError = require('../errors/NotFoundError');
+
+router.use('/', authRouter);
+
+router.use(auth);
+
+router.use('/users', usersRouter);
 
 router.use('/projects', projectsRouter);
 
-router.use('projects/:projectsID/tasks', tasksRouter);
-
-router.use('/users', usersRouter);
+// router.use('*', () => {
+//   throw new NotFoundError('Запрашиваемый объект не неайден');
+// });
 
 module.exports = router;
