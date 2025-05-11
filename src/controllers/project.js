@@ -27,6 +27,17 @@ module.exports.createProject = (req, res, next) => {
     });
 };
 
+module.exports.deleteProject = (req, res, next) => {
+  const { projectID } = req.params;
+  Task.deleteMany({ projectID })
+    .then(List.deleteMany({ projectID })
+      .then(Project.findByIdAndDelete(projectID)
+        .then((project) => res.send(project))
+        .catch(next))
+      .catch(next))
+    .catch(next);
+};
+
 module.exports.getProjectLists = (req, res, next) => {
   const { projectID } = req.params;
   List.find({ projectID })
@@ -103,7 +114,9 @@ module.exports.editProject = (req, res) => {
   console.log(res);
 };
 
-module.exports.deleteProject = (req, res) => {
-  console.log(req);
-  console.log(res);
+module.exports.deleteTask = (req, res, next) => {
+  const { taskID } = req.params;
+  Task.findByIdAndDelete(taskID)
+    .then((task) => res.send(task))
+    .catch(next);
 };

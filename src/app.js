@@ -17,7 +17,8 @@ const { PORT = 3001, SANSARA_DB = 'mongodb://localhost:27017/sansaradb' } = proc
 
 const app = express();
 
-mongoose.connect(SANSARA_DB, { useNewUrlParser: true });
+mongoose.connect(SANSARA_DB)
+  .then(() => console.log('MongoDB connected!'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

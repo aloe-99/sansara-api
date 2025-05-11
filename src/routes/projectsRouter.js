@@ -2,7 +2,7 @@ const projectsRouter = require('express').Router();
 
 const {
   getProjects, createProject, getProjectLists, createProjectList,
-  getProjectTasks, createProjectTask, moveTask, editProject, deleteProject,
+  getProjectTasks, createProjectTask, moveTask, deleteTask, editProject, deleteProject,
 } = require('../controllers/project');
 
 projectsRouter.get('/', getProjects);
@@ -16,6 +16,8 @@ projectsRouter.post('/:projectID', createProjectList);
 projectsRouter.get('/:projectID/tasks', getProjectTasks);
 
 projectsRouter.patch('/:projectID/tasks/:taskID', moveTask);
+
+projectsRouter.delete('/:projectID/tasks/:taskID', deleteTask);
 
 projectsRouter.post('/:projectID/lists/:listID', createProjectTask);
 
